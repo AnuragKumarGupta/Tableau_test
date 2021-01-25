@@ -1,0 +1,661 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20203.20.1018.2303                               -->
+<datasource formatted-name='DE_FINANCE_DATAMART_P&amp;L STATEMENT (2) (local copy)' inline='true' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelExtractV2.true...ObjectModelExtractV2 />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+  </document-format-change-manifest>
+  <connection class='federated'>
+    <named-connections>
+      <named-connection caption='ixa93060.snowflakecomputing.com' name='snowflake.1j6kv9t1f6ktpb1cc8z3y1ers5qy'>
+        <connection authentication='Username Password' class='snowflake' dbname='FINANCE_DATAMART' odbc-connect-string-extras='' one-time-sql='' schema='FINANCE' server='ixa93060.snowflakecomputing.com' server-oauth='' server-userid='428255' service='' username='INFOMTRYDEVUSR' warehouse='INFA_WH_XSMALL' workgroup-auth-mode='prompt' />
+      </named-connection>
+    </named-connections>
+    <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='snowflake.1j6kv9t1f6ktpb1cc8z3y1ers5qy' name='Custom SQL Query' type='text'>select FGL.key_id, FGL.hier_num,FGL.hier_name, FGL.HIER1_Name,FGL.HIER2_NAME,FGL.HIER3_NAME,FGL.HIER4_NAME, FGL.hier5_name,&#10;FGL.ACCOUNTCATEGORIES_KEY ,FGL.account_number ,FGL.net_amount, &#10;substring((CAST(FGL.GL_TRANSACTION_DATE_KEY as varchar)),0,4) as Fiscal_Year,substring((CAST(FGL.GL_TRANSACTION_DATE_KEY as varchar)),5,2) as Fiscal_Period,&#10;FGL.GL_TRANSACTION_DATE_KEY, NULL as Begin_Balance&#10;from &#10;(select H.key_id, H.hier_num,H.hier_name, H.HIER1_Name,H.HIER2_NAME,H.HIER3_NAME,H.HIER4_NAME, H.hier5_name,F.ACCOUNTCATEGORIES_KEY ,F.account_number,&#10;F.net_amount, F.GL_TRANSACTION_DATE_KEY&#10;from &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;FACT_GLJOURNALS&quot; as  F left join &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;DIM_HIERARCHY&quot; as H&#10;on H.HIER_NUM=F.ACCOUNT_NUMBER&#10;where F.GL_TRANSACTION_DATE_KEY &gt;&gt;=20150101 and F.GL_TRANSACTION_DATE_KEY &lt;&lt;=20171231&#10;and H.KEY_ID=&apos;P&amp;L_Hierarchy&apos;&#10;and h.HIER_KEY!=0 &#10;) as FGL&#10;UNION all&#10;select BB.key_id, BB.hier_num,BB.hier_name, BB.HIER1_Name,BB.HIER2_NAME,BB.HIER3_NAME,BB.HIER4_NAME, BB.hier5_name, null as BB_ACCOUNTCATEGORIES_KEY ,&#10;BB.account_number ,BB.Begin_Balance, BB.Fiscal_Year, NULL as BB_Fiscal_Period, NULL as BB_GL_TRANSACTION_DATE_KEY,BB.Begin_Balance  from&#10;(&#10;select H.key_id, H.hier_num,H.hier_name, H.HIER1_Name,H.HIER2_NAME,H.HIER3_NAME,H.HIER4_NAME, H.hier5_name, FC.account_number ,FC.Begin_Balance, FC.Fiscal_Year&#10;from&#10;(&#10;select F.account_number ,F.Begin_Balance, F.Fiscal_Year from&#10;&#9;(select sum(A.net_amount) as Begin_Balance,A.ACCOUNT_NUMBER, A.Fiscal_Year from &#10;&#9;&#9;(select net_amount,ACCOUNT_NUMBER,ACCOUNTCATEGORIES_KEY,date_part(year,dateadd(year, 2,to_date(to_char(GL_TRANSACTION_DATE_KEY)))) as Fiscal_Year&#10;&#9;&#9; from &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;FACT_GLJOURNALS&quot;&#10;&#9;&#9; where GL_TRANSACTION_DATE_KEY &lt;&lt;=20151231&#10;&#9;&#9;) as A&#10;&#9;group by A.ACCOUNT_NUMBER , Fiscal_Year&#10;&#9;) as F inner join &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;DIM_COA&quot; as C&#10;ON C.NATURAL_ACCOUNT_CODE= F.ACCOUNT_NUMBER&#10;where ACCT_INDEX like &apos;B%&apos; and NATURAL_ACCOUNT_CODE!=&apos;0&apos;&#10;) as FC left join &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;DIM_HIERARCHY&quot; as H&#10;on H.HIER_NUM=FC.ACCOUNT_NUMBER&#10;and H.KEY_ID=&apos;P&amp;L_Hierarchy&apos;&#10;and h.HIER_KEY!=0&#10;) as BB&#10;order by HIER1_NAME,HIER2_NAME,HIER3_NAME,HIER4_NAME,hier5_name</_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+    <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='snowflake.1j6kv9t1f6ktpb1cc8z3y1ers5qy' name='Custom SQL Query' type='text'>select FGL.key_id, FGL.hier_num,FGL.hier_name, FGL.HIER1_Name,FGL.HIER2_NAME,FGL.HIER3_NAME,FGL.HIER4_NAME, FGL.hier5_name,&#10;FGL.ACCOUNTCATEGORIES_KEY ,FGL.account_number ,FGL.net_amount, &#10;substring((CAST(FGL.GL_TRANSACTION_DATE_KEY as varchar)),0,4) as Fiscal_Year,substring((CAST(FGL.GL_TRANSACTION_DATE_KEY as varchar)),5,2) as Fiscal_Period,&#10;FGL.GL_TRANSACTION_DATE_KEY, NULL as Begin_Balance&#10;from &#10;(select H.key_id, H.hier_num,H.hier_name, H.HIER1_Name,H.HIER2_NAME,H.HIER3_NAME,H.HIER4_NAME, H.hier5_name,F.ACCOUNTCATEGORIES_KEY ,F.account_number,&#10;F.net_amount, F.GL_TRANSACTION_DATE_KEY&#10;from &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;FACT_GLJOURNALS&quot; as  F left join &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;DIM_HIERARCHY&quot; as H&#10;on H.HIER_NUM=F.ACCOUNT_NUMBER&#10;where F.GL_TRANSACTION_DATE_KEY &gt;&gt;=20150101 and F.GL_TRANSACTION_DATE_KEY &lt;&lt;=20171231&#10;and H.KEY_ID=&apos;P&amp;L_Hierarchy&apos;&#10;and h.HIER_KEY!=0 &#10;) as FGL&#10;UNION all&#10;select BB.key_id, BB.hier_num,BB.hier_name, BB.HIER1_Name,BB.HIER2_NAME,BB.HIER3_NAME,BB.HIER4_NAME, BB.hier5_name, null as BB_ACCOUNTCATEGORIES_KEY ,&#10;BB.account_number ,BB.Begin_Balance, BB.Fiscal_Year, NULL as BB_Fiscal_Period, NULL as BB_GL_TRANSACTION_DATE_KEY,BB.Begin_Balance  from&#10;(&#10;select H.key_id, H.hier_num,H.hier_name, H.HIER1_Name,H.HIER2_NAME,H.HIER3_NAME,H.HIER4_NAME, H.hier5_name, FC.account_number ,FC.Begin_Balance, FC.Fiscal_Year&#10;from&#10;(&#10;select F.account_number ,F.Begin_Balance, F.Fiscal_Year from&#10;&#9;(select sum(A.net_amount) as Begin_Balance,A.ACCOUNT_NUMBER, A.Fiscal_Year from &#10;&#9;&#9;(select net_amount,ACCOUNT_NUMBER,ACCOUNTCATEGORIES_KEY,date_part(year,dateadd(year, 2,to_date(to_char(GL_TRANSACTION_DATE_KEY)))) as Fiscal_Year&#10;&#9;&#9; from &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;FACT_GLJOURNALS&quot;&#10;&#9;&#9; where GL_TRANSACTION_DATE_KEY &lt;&lt;=20151231&#10;&#9;&#9;) as A&#10;&#9;group by A.ACCOUNT_NUMBER , Fiscal_Year&#10;&#9;) as F inner join &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;DIM_COA&quot; as C&#10;ON C.NATURAL_ACCOUNT_CODE= F.ACCOUNT_NUMBER&#10;where ACCT_INDEX like &apos;B%&apos; and NATURAL_ACCOUNT_CODE!=&apos;0&apos;&#10;) as FC left join &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;DIM_HIERARCHY&quot; as H&#10;on H.HIER_NUM=FC.ACCOUNT_NUMBER&#10;and H.KEY_ID=&apos;P&amp;L_Hierarchy&apos;&#10;and h.HIER_KEY!=0&#10;) as BB&#10;order by HIER1_NAME,HIER2_NAME,HIER3_NAME,HIER4_NAME,hier5_name</_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+    <refresh increment-key='' incremental-updates='false' />
+    <metadata-records>
+      <metadata-record class='column'>
+        <remote-name>KEY_ID</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[KEY_ID]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>KEY_ID</remote-alias>
+        <ordinal>1</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>80</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER_NUM</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER_NUM]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>HIER_NUM</remote-alias>
+        <ordinal>2</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>30</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER_NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER_NAME]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>HIER_NAME</remote-alias>
+        <ordinal>3</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>255</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER1_NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER1_NAME]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>HIER1_NAME</remote-alias>
+        <ordinal>4</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>255</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER2_NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER2_NAME]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>HIER2_NAME</remote-alias>
+        <ordinal>5</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>255</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER3_NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER3_NAME]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>HIER3_NAME</remote-alias>
+        <ordinal>6</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>255</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER4_NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER4_NAME]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>HIER4_NAME</remote-alias>
+        <ordinal>7</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>255</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER5_NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER5_NAME]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>HIER5_NAME</remote-alias>
+        <ordinal>8</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>255</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>ACCOUNTCATEGORIES_KEY</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[ACCOUNTCATEGORIES_KEY]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>ACCOUNTCATEGORIES_KEY</remote-alias>
+        <ordinal>9</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>38</precision>
+        <scale>0</scale>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>ACCOUNT_NUMBER</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[ACCOUNT_NUMBER]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>ACCOUNT_NUMBER</remote-alias>
+        <ordinal>10</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>30</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>NET_AMOUNT</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[NET_AMOUNT]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>NET_AMOUNT</remote-alias>
+        <ordinal>11</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>31</precision>
+        <scale>5</scale>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>FISCAL_YEAR</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[FISCAL_YEAR]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>FISCAL_YEAR</remote-alias>
+        <ordinal>12</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>18</precision>
+        <scale>5</scale>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>FISCAL_PERIOD</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[FISCAL_PERIOD]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>FISCAL_PERIOD</remote-alias>
+        <ordinal>13</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>GL_TRANSACTION_DATE_KEY</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[GL_TRANSACTION_DATE_KEY]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>GL_TRANSACTION_DATE_KEY</remote-alias>
+        <ordinal>14</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>38</precision>
+        <scale>0</scale>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>BEGIN_BALANCE</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[BEGIN_BALANCE]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>BEGIN_BALANCE</remote-alias>
+        <ordinal>15</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>31</precision>
+        <scale>5</scale>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+    </metadata-records>
+  </connection>
+  <aliases enabled='yes' />
+  <column caption='#Hier3' datatype='string' name='[Calculation_418834826044575744]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='[HIER3_NAME]' />
+  </column>
+  <column caption='#Selected Hier3 name' datatype='boolean' name='[Calculation_418834826050641921]' role='measure' type='nominal'>
+    <calculation class='tableau' formula='TOTAL(COUNTD([HIER3_NAME]))=1'>
+      <table-calc ordering-type='Rows' />
+    </calculation>
+  </column>
+  <column caption='#Seleced Hier3 Name' datatype='string' name='[Calculation_418834826075553796]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='&quot;Hier3 Name&quot;' />
+    <aliases>
+      <alias key='&quot;Hier3 Name&quot;' value='Category' />
+    </aliases>
+  </column>
+  <column caption='#Hier2 ' datatype='string' name='[Calculation_418834826284601349]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='[HIER2_NAME]' />
+  </column>
+  <column caption='#Hier1' datatype='string' name='[Calculation_418834826287063046]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='[HIER1_NAME]' />
+  </column>
+  <column caption='#Selected Hier2 Name' datatype='string' name='[Calculation_418834826325327879]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='&apos;Hier2 Name&apos;' />
+    <aliases>
+      <alias key='&quot;Hier2 Name&quot;' value='Sub Category' />
+    </aliases>
+  </column>
+  <column caption='#Selected Hier1 Name' datatype='string' name='[Calculation_418834826340945928]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='&apos;Hier1 name&apos;' />
+    <aliases>
+      <alias key='&quot;Hier1 name&quot;' value='Description' />
+    </aliases>
+  </column>
+  <column caption='#Hier' datatype='string' name='[Calculation_418834826399969289]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='MID([HIER1_NAME],7)' />
+  </column>
+  <column caption='Calculation1' datatype='integer' name='[Calculation_418834826411134986]' role='measure' type='ordinal'>
+    <calculation class='tableau' formula='IF SUM([NET_AMOUNT])&lt;0 THEN 1 ELSE 0 END' />
+  </column>
+  <column aggregation='Sum' datatype='real' name='[FISCAL_YEAR]' role='dimension' type='ordinal' />
+  <column datatype='string' name='[HIER1_NAME]' role='dimension' type='nominal' />
+  <column datatype='string' name='[HIER2_NAME]' role='dimension' type='nominal' />
+  <column datatype='string' name='[HIER3_NAME]' role='dimension' type='nominal' />
+  <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+    <calculation class='tableau' formula='1' />
+  </column>
+  <_.fcp.ObjectModelTableType.true...column caption='Migrated Data' datatype='table' name='[__tableau_internal_object_id__].[Migrated Data]' role='measure' type='quantitative' />
+  <column-instance column='[Calculation_418834826044575744]' derivation='None' name='[none:Calculation_418834826044575744:nk]' pivot='key' type='nominal' />
+  <column-instance column='[Calculation_418834826075553796]' derivation='None' name='[none:Calculation_418834826075553796:nk]' pivot='key' type='nominal' />
+  <column-instance column='[Calculation_418834826284601349]' derivation='None' name='[none:Calculation_418834826284601349:nk]' pivot='key' type='nominal' />
+  <column-instance column='[Calculation_418834826325327879]' derivation='None' name='[none:Calculation_418834826325327879:nk]' pivot='key' type='nominal' />
+  <group caption='Action (#Hier2 )' hidden='true' name='[Action (#Hier2 )]' name-style='unqualified' user:auto-column='sheet_link'>
+    <groupfilter function='crossjoin'>
+      <groupfilter function='level-members' level='[Calculation_418834826284601349]' />
+    </groupfilter>
+  </group>
+  <group caption='Action (#Hier2 ,#Selected Hier2 Name)' hidden='true' name='[Action (#Hier2 ,#Selected Hier2 Name)]' name-style='unqualified' user:auto-column='sheet_link'>
+    <groupfilter function='crossjoin'>
+      <groupfilter function='level-members' level='[Calculation_418834826284601349]' />
+      <groupfilter function='level-members' level='[Calculation_418834826325327879]' />
+    </groupfilter>
+  </group>
+  <group caption='Action (#Hier3)' hidden='true' name='[Action (#Hier3)]' name-style='unqualified' user:auto-column='sheet_link'>
+    <groupfilter function='crossjoin'>
+      <groupfilter function='level-members' level='[Calculation_418834826044575744]' />
+    </groupfilter>
+  </group>
+  <group caption='Action (#Hier3,#Hier2 ,#Hier,FISCAL_YEAR)' hidden='true' name='[Action (#Hier3,#Hier2 ,#Hier,FISCAL_YEAR)]' name-style='unqualified' user:auto-column='sheet_link'>
+    <groupfilter function='crossjoin'>
+      <groupfilter function='level-members' level='[Calculation_418834826044575744]' />
+      <groupfilter function='level-members' level='[Calculation_418834826284601349]' />
+      <groupfilter function='level-members' level='[Calculation_418834826399969289]' />
+      <groupfilter function='level-members' level='[FISCAL_YEAR]' />
+    </groupfilter>
+  </group>
+  <group caption='Action (#Hier3,#Seleced Hier3 Name)' hidden='true' name='[Action (#Hier3,#Seleced Hier3 Name)]' name-style='unqualified' user:auto-column='sheet_link'>
+    <groupfilter function='crossjoin'>
+      <groupfilter function='level-members' level='[Calculation_418834826044575744]' />
+      <groupfilter function='level-members' level='[Calculation_418834826075553796]' />
+    </groupfilter>
+  </group>
+  <group caption='Action (#Selected Hier1 Name,#Hier)' hidden='true' name='[Action (#Selected Hier1 Name,#Hier)]' name-style='unqualified' user:auto-column='sheet_link'>
+    <groupfilter function='crossjoin'>
+      <groupfilter function='level-members' level='[Calculation_418834826340945928]' />
+      <groupfilter function='level-members' level='[Calculation_418834826399969289]' />
+    </groupfilter>
+  </group>
+  <group caption='Action (HIER1_NAME)' hidden='true' name='[Action (HIER1_NAME)]' name-style='unqualified' user:auto-column='sheet_link'>
+    <groupfilter function='crossjoin'>
+      <groupfilter function='level-members' level='[HIER1_NAME]' />
+    </groupfilter>
+  </group>
+  <group caption='Action (HIER2_NAME)' hidden='true' name='[Action (HIER2_NAME)]' name-style='unqualified' user:auto-column='sheet_link'>
+    <groupfilter function='crossjoin'>
+      <groupfilter function='level-members' level='[HIER2_NAME]' />
+    </groupfilter>
+  </group>
+  <group caption='Action (HIER3_NAME)' hidden='true' name='[Action (HIER3_NAME)]' name-style='unqualified' user:auto-column='sheet_link'>
+    <groupfilter function='crossjoin'>
+      <groupfilter function='level-members' level='[HIER3_NAME]' />
+    </groupfilter>
+  </group>
+  <group hidden='true' name='[Exclusions (#Hier2 ,#Selected Hier2 Name)]' name-style='unqualified' user:auto-column='exclude'>
+    <groupfilter function='crossjoin'>
+      <groupfilter function='level-members' level='[none:Calculation_418834826284601349:nk]' />
+      <groupfilter function='level-members' level='[none:Calculation_418834826325327879:nk]' />
+    </groupfilter>
+  </group>
+  <group hidden='true' name='[Exclusions (#Hier3,#Seleced Hier3 Name)]' name-style='unqualified' user:auto-column='exclude'>
+    <groupfilter function='crossjoin'>
+      <groupfilter function='level-members' level='[none:Calculation_418834826044575744:nk]' />
+      <groupfilter function='level-members' level='[none:Calculation_418834826075553796:nk]' />
+    </groupfilter>
+  </group>
+  <extract _.fcp.ObjectModelExtractV2.true...object-id='Migrated Data' count='-1' enabled='true' units='records'>
+    <connection authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Users/user/Documents/My Tableau Repository/Datasources/Finance/DE_FINANCE_DATAMART_P&amp;L STATEMENT (.tds Files/Data/Extracts 3/DE_FINANCE_DATAMART_P_L STATEMEN.hyper' schema='Extract' sslmode='' tablename='Extract' update-time='12/09/2020 10:03:04 AM' username=''>
+      <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+      <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+      <metadata-records>
+        <metadata-record class='column'>
+          <remote-name>KEY_ID</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[KEY_ID]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>KEY_ID</remote-alias>
+          <ordinal>0</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>2</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER_NUM</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER_NUM]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER_NUM</remote-alias>
+          <ordinal>1</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>58</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER_NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER_NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER_NAME</remote-alias>
+          <ordinal>2</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>58</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER1_NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER1_NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER1_NAME</remote-alias>
+          <ordinal>3</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>41</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER2_NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER2_NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER2_NAME</remote-alias>
+          <ordinal>4</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>5</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER3_NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER3_NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER3_NAME</remote-alias>
+          <ordinal>5</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>3</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER4_NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER4_NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER4_NAME</remote-alias>
+          <ordinal>6</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>3</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER5_NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER5_NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER5_NAME</remote-alias>
+          <ordinal>7</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>3</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>ACCOUNTCATEGORIES_KEY</remote-name>
+          <remote-type>5</remote-type>
+          <local-name>[ACCOUNTCATEGORIES_KEY]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>ACCOUNTCATEGORIES_KEY</remote-alias>
+          <ordinal>8</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>real</local-type>
+          <aggregation>Sum</aggregation>
+          <approx-count>5</approx-count>
+          <contains-null>true</contains-null>
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>ACCOUNT_NUMBER</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[ACCOUNT_NUMBER]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>ACCOUNT_NUMBER</remote-alias>
+          <ordinal>9</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>69</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>NET_AMOUNT</remote-name>
+          <remote-type>5</remote-type>
+          <local-name>[NET_AMOUNT]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>NET_AMOUNT</remote-alias>
+          <ordinal>10</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>real</local-type>
+          <aggregation>Sum</aggregation>
+          <approx-count>1792</approx-count>
+          <contains-null>true</contains-null>
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>FISCAL_YEAR</remote-name>
+          <remote-type>5</remote-type>
+          <local-name>[FISCAL_YEAR]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>FISCAL_YEAR</remote-alias>
+          <ordinal>11</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>real</local-type>
+          <aggregation>Sum</aggregation>
+          <approx-count>4</approx-count>
+          <contains-null>true</contains-null>
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>FISCAL_PERIOD</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[FISCAL_PERIOD]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>FISCAL_PERIOD</remote-alias>
+          <ordinal>12</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>13</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>GL_TRANSACTION_DATE_KEY</remote-name>
+          <remote-type>5</remote-type>
+          <local-name>[GL_TRANSACTION_DATE_KEY]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>GL_TRANSACTION_DATE_KEY</remote-alias>
+          <ordinal>13</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>real</local-type>
+          <aggregation>Sum</aggregation>
+          <approx-count>32</approx-count>
+          <contains-null>true</contains-null>
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>BEGIN_BALANCE</remote-name>
+          <remote-type>5</remote-type>
+          <local-name>[BEGIN_BALANCE]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>BEGIN_BALANCE</remote-alias>
+          <ordinal>14</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>real</local-type>
+          <aggregation>Sum</aggregation>
+          <approx-count>13</approx-count>
+          <contains-null>true</contains-null>
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+      </metadata-records>
+    </connection>
+  </extract>
+  <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' _.fcp.SchemaViewerObjectModel.true...common-percentage='0.867368' _.fcp.SchemaViewerObjectModel.true...user-set-layout-v2='true' dim-ordering='alphabetic' measure-ordering='alphabetic' parameter-percentage='0.132632' show-structure='true' />
+  <semantic-values>
+    <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+  </semantic-values>
+  <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    <objects>
+      <object caption='Migrated Data' id='Migrated Data'>
+        <properties context=''>
+          <relation connection='snowflake.1j6kv9t1f6ktpb1cc8z3y1ers5qy' name='Custom SQL Query' type='text'>select FGL.key_id, FGL.hier_num,FGL.hier_name, FGL.HIER1_Name,FGL.HIER2_NAME,FGL.HIER3_NAME,FGL.HIER4_NAME, FGL.hier5_name,&#10;FGL.ACCOUNTCATEGORIES_KEY ,FGL.account_number ,FGL.net_amount, &#10;substring((CAST(FGL.GL_TRANSACTION_DATE_KEY as varchar)),0,4) as Fiscal_Year,substring((CAST(FGL.GL_TRANSACTION_DATE_KEY as varchar)),5,2) as Fiscal_Period,&#10;FGL.GL_TRANSACTION_DATE_KEY, NULL as Begin_Balance&#10;from &#10;(select H.key_id, H.hier_num,H.hier_name, H.HIER1_Name,H.HIER2_NAME,H.HIER3_NAME,H.HIER4_NAME, H.hier5_name,F.ACCOUNTCATEGORIES_KEY ,F.account_number,&#10;F.net_amount, F.GL_TRANSACTION_DATE_KEY&#10;from &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;FACT_GLJOURNALS&quot; as  F left join &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;DIM_HIERARCHY&quot; as H&#10;on H.HIER_NUM=F.ACCOUNT_NUMBER&#10;where F.GL_TRANSACTION_DATE_KEY &gt;&gt;=20150101 and F.GL_TRANSACTION_DATE_KEY &lt;&lt;=20171231&#10;and H.KEY_ID=&apos;P&amp;L_Hierarchy&apos;&#10;and h.HIER_KEY!=0 &#10;) as FGL&#10;UNION all&#10;select BB.key_id, BB.hier_num,BB.hier_name, BB.HIER1_Name,BB.HIER2_NAME,BB.HIER3_NAME,BB.HIER4_NAME, BB.hier5_name, null as BB_ACCOUNTCATEGORIES_KEY ,&#10;BB.account_number ,BB.Begin_Balance, BB.Fiscal_Year, NULL as BB_Fiscal_Period, NULL as BB_GL_TRANSACTION_DATE_KEY,BB.Begin_Balance  from&#10;(&#10;select H.key_id, H.hier_num,H.hier_name, H.HIER1_Name,H.HIER2_NAME,H.HIER3_NAME,H.HIER4_NAME, H.hier5_name, FC.account_number ,FC.Begin_Balance, FC.Fiscal_Year&#10;from&#10;(&#10;select F.account_number ,F.Begin_Balance, F.Fiscal_Year from&#10;&#9;(select sum(A.net_amount) as Begin_Balance,A.ACCOUNT_NUMBER, A.Fiscal_Year from &#10;&#9;&#9;(select net_amount,ACCOUNT_NUMBER,ACCOUNTCATEGORIES_KEY,date_part(year,dateadd(year, 2,to_date(to_char(GL_TRANSACTION_DATE_KEY)))) as Fiscal_Year&#10;&#9;&#9; from &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;FACT_GLJOURNALS&quot;&#10;&#9;&#9; where GL_TRANSACTION_DATE_KEY &lt;&lt;=20151231&#10;&#9;&#9;) as A&#10;&#9;group by A.ACCOUNT_NUMBER , Fiscal_Year&#10;&#9;) as F inner join &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;DIM_COA&quot; as C&#10;ON C.NATURAL_ACCOUNT_CODE= F.ACCOUNT_NUMBER&#10;where ACCT_INDEX like &apos;B%&apos; and NATURAL_ACCOUNT_CODE!=&apos;0&apos;&#10;) as FC left join &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;DIM_HIERARCHY&quot; as H&#10;on H.HIER_NUM=FC.ACCOUNT_NUMBER&#10;and H.KEY_ID=&apos;P&amp;L_Hierarchy&apos;&#10;and h.HIER_KEY!=0&#10;) as BB&#10;order by HIER1_NAME,HIER2_NAME,HIER3_NAME,HIER4_NAME,hier5_name</relation>
+        </properties>
+        <properties context='extract'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+        </properties>
+      </object>
+    </objects>
+  </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+</datasource>

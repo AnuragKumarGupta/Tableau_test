@@ -1,0 +1,594 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20203.20.1018.2303                               -->
+<datasource formatted-name='DE_FINANCE_DATAMART_PNL_GL_JOURNALS_AGGREGATION (local copy)' inline='true' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelExtractV2.true...ObjectModelExtractV2 />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+  </document-format-change-manifest>
+  <connection class='federated'>
+    <named-connections>
+      <named-connection caption='ixa93060.snowflakecomputing.com' name='snowflake.0w5vyze1z03yop10cw9ye0ikniyt'>
+        <connection authentication='Username Password' class='snowflake' dbname='FINANCE_DATAMART' odbc-connect-string-extras='' one-time-sql='' schema='FINANCE' server='ixa93060.snowflakecomputing.com' server-oauth='' server-userid='428255' service='' username='INFOMTRYDEVUSR' warehouse='INFA_WH_XSMALL' workgroup-auth-mode='prompt' />
+      </named-connection>
+    </named-connections>
+    <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='snowflake.0w5vyze1z03yop10cw9ye0ikniyt' name='PNL_GL_JOURNALS_AGGREGATION' table='[FINANCE].[PNL_GL_JOURNALS_AGGREGATION]' type='table' />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='snowflake.0w5vyze1z03yop10cw9ye0ikniyt' name='PNL_GL_JOURNALS_AGGREGATION' table='[FINANCE].[PNL_GL_JOURNALS_AGGREGATION]' type='table' />
+    <refresh increment-key='' incremental-updates='false' />
+    <metadata-records>
+      <metadata-record class='column'>
+        <remote-name>KEY_ID</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[KEY_ID]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>KEY_ID</remote-alias>
+        <ordinal>1</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>80</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER_NUM</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER_NUM]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>HIER_NUM</remote-alias>
+        <ordinal>2</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>30</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER_NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER_NAME]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>HIER_NAME</remote-alias>
+        <ordinal>3</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>255</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER1_NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER1_NAME]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>HIER1_NAME</remote-alias>
+        <ordinal>4</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>255</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER2_NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER2_NAME]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>HIER2_NAME</remote-alias>
+        <ordinal>5</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>255</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER3_NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER3_NAME]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>HIER3_NAME</remote-alias>
+        <ordinal>6</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>255</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER4_NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER4_NAME]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>HIER4_NAME</remote-alias>
+        <ordinal>7</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>255</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>ACCOUNTCATEGORIES_KEY</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[ACCOUNTCATEGORIES_KEY]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>ACCOUNTCATEGORIES_KEY</remote-alias>
+        <ordinal>8</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>38</precision>
+        <scale>0</scale>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>ACCOUNT_NUMBER</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[ACCOUNT_NUMBER]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>ACCOUNT_NUMBER</remote-alias>
+        <ordinal>9</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>30</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>NET_AMOUNT</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[NET_AMOUNT]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>NET_AMOUNT</remote-alias>
+        <ordinal>10</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>21</precision>
+        <scale>5</scale>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>FISCAL_YEAR</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[FISCAL_YEAR]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>FISCAL_YEAR</remote-alias>
+        <ordinal>11</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>5</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>FISCAL_PERIOD</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[FISCAL_PERIOD]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>FISCAL_PERIOD</remote-alias>
+        <ordinal>12</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>2</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>GL_TRANSACTION_DATE_KEY</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[GL_TRANSACTION_DATE_KEY]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>GL_TRANSACTION_DATE_KEY</remote-alias>
+        <ordinal>13</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>38</precision>
+        <scale>0</scale>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>AGGREGATE_NET_AMOUNT</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[AGGREGATE_NET_AMOUNT]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>AGGREGATE_NET_AMOUNT</remote-alias>
+        <ordinal>14</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>38</precision>
+        <scale>0</scale>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>HIER5_NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[HIER5_NAME]</local-name>
+        <parent-name>[PNL_GL_JOURNALS_AGGREGATION]</parent-name>
+        <remote-alias>HIER5_NAME</remote-alias>
+        <ordinal>15</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>50</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+    </metadata-records>
+  </connection>
+  <aliases enabled='yes' />
+  <column caption='Accountcategories Key' datatype='integer' name='[ACCOUNTCATEGORIES_KEY]' role='dimension' type='ordinal' />
+  <column caption='Account Number' datatype='string' name='[ACCOUNT_NUMBER]' role='dimension' type='nominal' />
+  <column caption='Aggregate Net Amount' datatype='integer' name='[AGGREGATE_NET_AMOUNT]' role='measure' type='quantitative' />
+  <column caption='Net Amt' datatype='real' name='[Calculation_962081527577804810]' role='measure' type='quantitative'>
+    <calculation class='tableau' formula='If [NET_AMOUNT]&lt;0 then [NET_AMOUNT]*-1 else [NET_AMOUNT] end' />
+  </column>
+  <column caption='Fiscal Period' datatype='string' name='[FISCAL_PERIOD]' role='dimension' type='nominal' />
+  <column caption='Fiscal Year' datatype='string' name='[FISCAL_YEAR]' role='dimension' type='nominal' />
+  <column caption='Gl Transaction Date Key' datatype='integer' name='[GL_TRANSACTION_DATE_KEY]' role='dimension' type='ordinal' />
+  <column caption='Hier1 Name' datatype='string' name='[HIER1_NAME]' role='dimension' type='nominal' />
+  <column caption='Hier2 Name' datatype='string' name='[HIER2_NAME]' role='dimension' type='nominal' />
+  <column caption='Hier3 Name' datatype='string' name='[HIER3_NAME]' role='dimension' type='nominal' />
+  <column caption='Hier4 Name' datatype='string' name='[HIER4_NAME]' role='dimension' type='nominal' />
+  <column caption='Hier5 Name' datatype='string' name='[HIER5_NAME]' role='dimension' type='nominal' />
+  <column caption='Hier Name' datatype='string' name='[HIER_NAME]' role='dimension' type='nominal' />
+  <column caption='Hier Num' datatype='string' name='[HIER_NUM]' role='dimension' type='nominal' />
+  <column caption='Key Id' datatype='string' name='[KEY_ID]' role='dimension' type='nominal' />
+  <column caption='Net Amount' datatype='real' name='[NET_AMOUNT]' role='measure' type='quantitative' />
+  <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+    <calculation class='tableau' formula='1' />
+  </column>
+  <_.fcp.ObjectModelTableType.true...column caption='Migrated Data' datatype='table' name='[__tableau_internal_object_id__].[Migrated Data]' role='measure' type='quantitative' />
+  <column-instance column='[HIER2_NAME]' derivation='None' name='[none:HIER2_NAME:nk]' pivot='key' type='nominal' />
+  <extract _.fcp.ObjectModelExtractV2.true...object-id='Migrated Data' count='-1' enabled='true' units='records'>
+    <connection authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Users/user/Documents/My Tableau Repository/Datasources/Finance/DE_FINANCE_DATAMART_PNL_GL_JOURNALS_AGGREGATION.tds Files/Data/Extracts 4/DE_FINANCE_DATAMART_PNL_GL_JOURN.hyper' schema='Extract' sslmode='' tablename='Extract' update-time='12/09/2020 10:07:22 AM' username=''>
+      <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+      <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+      <metadata-records>
+        <metadata-record class='column'>
+          <remote-name>KEY_ID</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[KEY_ID]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>KEY_ID</remote-alias>
+          <ordinal>0</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>2</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER_NUM</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER_NUM]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER_NUM</remote-alias>
+          <ordinal>1</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>43</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER_NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER_NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER_NAME</remote-alias>
+          <ordinal>2</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>43</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER1_NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER1_NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER1_NAME</remote-alias>
+          <ordinal>3</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>43</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER2_NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER2_NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER2_NAME</remote-alias>
+          <ordinal>4</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>5</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER3_NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER3_NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER3_NAME</remote-alias>
+          <ordinal>5</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>3</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER4_NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER4_NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER4_NAME</remote-alias>
+          <ordinal>6</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>3</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>ACCOUNTCATEGORIES_KEY</remote-name>
+          <remote-type>20</remote-type>
+          <local-name>[ACCOUNTCATEGORIES_KEY]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>ACCOUNTCATEGORIES_KEY</remote-alias>
+          <ordinal>7</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>integer</local-type>
+          <aggregation>Sum</aggregation>
+          <approx-count>5</approx-count>
+          <contains-null>true</contains-null>
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>ACCOUNT_NUMBER</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[ACCOUNT_NUMBER]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>ACCOUNT_NUMBER</remote-alias>
+          <ordinal>8</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>43</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>NET_AMOUNT</remote-name>
+          <remote-type>5</remote-type>
+          <local-name>[NET_AMOUNT]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>NET_AMOUNT</remote-alias>
+          <ordinal>9</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>real</local-type>
+          <aggregation>Sum</aggregation>
+          <approx-count>37</approx-count>
+          <contains-null>true</contains-null>
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>FISCAL_YEAR</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[FISCAL_YEAR]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>FISCAL_YEAR</remote-alias>
+          <ordinal>10</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>4</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>FISCAL_PERIOD</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[FISCAL_PERIOD]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>FISCAL_PERIOD</remote-alias>
+          <ordinal>11</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>11</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>GL_TRANSACTION_DATE_KEY</remote-name>
+          <remote-type>20</remote-type>
+          <local-name>[GL_TRANSACTION_DATE_KEY]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>GL_TRANSACTION_DATE_KEY</remote-alias>
+          <ordinal>12</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>integer</local-type>
+          <aggregation>Sum</aggregation>
+          <approx-count>15</approx-count>
+          <contains-null>true</contains-null>
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>AGGREGATE_NET_AMOUNT</remote-name>
+          <remote-type>20</remote-type>
+          <local-name>[AGGREGATE_NET_AMOUNT]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>AGGREGATE_NET_AMOUNT</remote-alias>
+          <ordinal>13</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>integer</local-type>
+          <aggregation>Sum</aggregation>
+          <approx-count>48</approx-count>
+          <contains-null>true</contains-null>
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>HIER5_NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[HIER5_NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>HIER5_NAME</remote-alias>
+          <ordinal>14</ordinal>
+          <family>PNL_GL_JOURNALS_AGGREGATION</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>3</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+      </metadata-records>
+    </connection>
+  </extract>
+  <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' _.fcp.SchemaViewerObjectModel.true...common-percentage='0.909938' _.fcp.SchemaViewerObjectModel.true...user-set-layout-v2='true' dim-ordering='alphabetic' measure-ordering='alphabetic' parameter-percentage='0.0900621' show-structure='true' />
+  <style>
+    <style-rule element='mark'>
+      <encoding attr='color' field='[none:HIER2_NAME:nk]' type='palette'>
+        <map to='#4e79a7'>
+          <bucket>&quot;Cost Of Sales&quot;</bucket>
+        </map>
+        <map to='#59a14f'>
+          <bucket>%null%</bucket>
+        </map>
+        <map to='#76b7b2'>
+          <bucket>&quot;Other Income&quot;</bucket>
+        </map>
+        <map to='#e15759'>
+          <bucket>&quot;Income&quot;</bucket>
+        </map>
+        <map to='#f28e2b'>
+          <bucket>&quot;Expense&quot;</bucket>
+        </map>
+      </encoding>
+    </style-rule>
+  </style>
+  <semantic-values>
+    <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+  </semantic-values>
+  <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    <objects>
+      <object caption='Migrated Data' id='Migrated Data'>
+        <properties context=''>
+          <relation connection='snowflake.0w5vyze1z03yop10cw9ye0ikniyt' name='PNL_GL_JOURNALS_AGGREGATION' table='[FINANCE].[PNL_GL_JOURNALS_AGGREGATION]' type='table' />
+        </properties>
+        <properties context='extract'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+        </properties>
+      </object>
+    </objects>
+  </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+</datasource>

@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20203.20.1018.2303                               -->
+<datasource formatted-name='DE_NETSUITE_LANDING_ANALYSIS (2) (local copy)' inline='true' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelExtractV2.true...ObjectModelExtractV2 />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+  </document-format-change-manifest>
+  <connection class='federated'>
+    <named-connections>
+      <named-connection caption='ixa93060.snowflakecomputing.com' name='snowflake.1r0y0yv1ehzw471afphg702audqy'>
+        <connection authentication='Username Password' class='snowflake' dbname='NETSUITE_LANDING' odbc-connect-string-extras='' one-time-sql='' schema='FINANCE' server='ixa93060.snowflakecomputing.com' server-oauth='' server-userid='428255' service='' username='INFOMTRYDEVUSR' warehouse='INFA_WH_XSMALL' workgroup-auth-mode='prompt' />
+      </named-connection>
+    </named-connections>
+    <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='snowflake.1r0y0yv1ehzw471afphg702audqy' name='Custom SQL Query' type='text'>SELECT F.*,G.NAME,G.ACCOUNTNUMBER FROM(select C.*, D.FULL_NAME from (select A.ACCOUNT_ID,A.AMOUNT,B.ENTITY_ID from &quot;NETSUITE_LANDING&quot;.&quot;FINANCE&quot;.&quot;TRANSACTION_LINES&quot; A inner join &quot;NETSUITE_LANDING&quot;.&quot;FINANCE&quot;.&quot;TRANSACTIONS&quot; B on A. TRANSACTION_ID&#13;&#10;=B. TRANSACTION_ID) C left outer join &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;DIM_CUSTOMERS&quot; D on C.ENTITY_ID=D.CUSTOMER_ID) F left outer JOIN &#13;&#10;&quot;NETSUITE_LANDING&quot;.&quot;FINANCE&quot;.&quot;ACCOUNTS&quot; G ON F.ACCOUNT_ID=G.ACCOUNT_ID</_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+    <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='snowflake.1r0y0yv1ehzw471afphg702audqy' name='Custom SQL Query' type='text'>SELECT F.*,G.NAME,G.ACCOUNTNUMBER FROM(select C.*, D.FULL_NAME from (select A.ACCOUNT_ID,A.AMOUNT,B.ENTITY_ID from &quot;NETSUITE_LANDING&quot;.&quot;FINANCE&quot;.&quot;TRANSACTION_LINES&quot; A inner join &quot;NETSUITE_LANDING&quot;.&quot;FINANCE&quot;.&quot;TRANSACTIONS&quot; B on A. TRANSACTION_ID&#13;&#10;=B. TRANSACTION_ID) C left outer join &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;DIM_CUSTOMERS&quot; D on C.ENTITY_ID=D.CUSTOMER_ID) F left outer JOIN &#13;&#10;&quot;NETSUITE_LANDING&quot;.&quot;FINANCE&quot;.&quot;ACCOUNTS&quot; G ON F.ACCOUNT_ID=G.ACCOUNT_ID</_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+    <refresh increment-key='' incremental-updates='false' />
+    <metadata-records>
+      <metadata-record class='column'>
+        <remote-name>ACCOUNT_ID</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[ACCOUNT_ID]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>ACCOUNT_ID</remote-alias>
+        <ordinal>1</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>20</precision>
+        <scale>0</scale>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>AMOUNT</remote-name>
+        <remote-type>5</remote-type>
+        <local-name>[AMOUNT]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>AMOUNT</remote-alias>
+        <ordinal>2</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>15</precision>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>ENTITY_ID</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[ENTITY_ID]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>ENTITY_ID</remote-alias>
+        <ordinal>3</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>20</precision>
+        <scale>0</scale>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>FULL_NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[FULL_NAME]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>FULL_NAME</remote-alias>
+        <ordinal>4</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>1800</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>NAME</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[NAME]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>NAME</remote-alias>
+        <ordinal>5</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>93</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>ACCOUNTNUMBER</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[ACCOUNTNUMBER]</local-name>
+        <parent-name>[Custom SQL Query]</parent-name>
+        <remote-alias>ACCOUNTNUMBER</remote-alias>
+        <ordinal>6</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>30</width>
+        <contains-null>true</contains-null>
+        <collation flag='0' name='binary' />
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+          <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+          <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+    </metadata-records>
+  </connection>
+  <aliases enabled='yes' />
+  <column caption='Amount' datatype='real' name='[AMOUNT]' role='measure' type='quantitative' />
+  <column caption='Customer' datatype='string' name='[FULL_NAME]' role='dimension' type='nominal' />
+  <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+    <calculation class='tableau' formula='1' />
+  </column>
+  <_.fcp.ObjectModelTableType.true...column caption='Migrated Data' datatype='table' name='[__tableau_internal_object_id__].[Migrated Data]' role='measure' type='quantitative' />
+  <extract _.fcp.ObjectModelExtractV2.true...object-id='Migrated Data' count='-1' enabled='true' units='records'>
+    <connection authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Users/user/Documents/My Tableau Repository/Datasources/Finance/DE_NETSUITE_LANDING_ANALYSIS.tds Files/Data/Extracts 5/DE_NETSUITE_LANDING_ANALYSIS.hyper' schema='Extract' sslmode='' tablename='Extract' update-time='12/09/2020 10:10:45 AM' username=''>
+      <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+      <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+      <metadata-records>
+        <metadata-record class='column'>
+          <remote-name>ACCOUNT_ID</remote-name>
+          <remote-type>5</remote-type>
+          <local-name>[ACCOUNT_ID]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>ACCOUNT_ID</remote-alias>
+          <ordinal>0</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>real</local-type>
+          <aggregation>Sum</aggregation>
+          <approx-count>114</approx-count>
+          <contains-null>true</contains-null>
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>AMOUNT</remote-name>
+          <remote-type>5</remote-type>
+          <local-name>[AMOUNT]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>AMOUNT</remote-alias>
+          <ordinal>1</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>real</local-type>
+          <aggregation>Sum</aggregation>
+          <approx-count>3363</approx-count>
+          <contains-null>true</contains-null>
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>ENTITY_ID</remote-name>
+          <remote-type>5</remote-type>
+          <local-name>[ENTITY_ID]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>ENTITY_ID</remote-alias>
+          <ordinal>2</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>real</local-type>
+          <aggregation>Sum</aggregation>
+          <approx-count>860</approx-count>
+          <contains-null>true</contains-null>
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>FULL_NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[FULL_NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>FULL_NAME</remote-alias>
+          <ordinal>3</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>329</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>NAME</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[NAME]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>NAME</remote-alias>
+          <ordinal>4</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>114</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+        <metadata-record class='column'>
+          <remote-name>ACCOUNTNUMBER</remote-name>
+          <remote-type>129</remote-type>
+          <local-name>[ACCOUNTNUMBER]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>ACCOUNTNUMBER</remote-alias>
+          <ordinal>5</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>string</local-type>
+          <aggregation>Count</aggregation>
+          <approx-count>83</approx-count>
+          <contains-null>true</contains-null>
+          <collation flag='0' name='binary' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+        </metadata-record>
+      </metadata-records>
+    </connection>
+  </extract>
+  <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' _.fcp.SchemaViewerObjectModel.true...common-percentage='0.658947' _.fcp.SchemaViewerObjectModel.true...user-set-layout-v2='true' dim-ordering='alphabetic' measure-ordering='alphabetic' parameter-percentage='0.341053' show-structure='true' />
+  <semantic-values>
+    <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+  </semantic-values>
+  <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    <objects>
+      <object caption='Migrated Data' id='Migrated Data'>
+        <properties context=''>
+          <relation connection='snowflake.1r0y0yv1ehzw471afphg702audqy' name='Custom SQL Query' type='text'>SELECT F.*,G.NAME,G.ACCOUNTNUMBER FROM(select C.*, D.FULL_NAME from (select A.ACCOUNT_ID,A.AMOUNT,B.ENTITY_ID from &quot;NETSUITE_LANDING&quot;.&quot;FINANCE&quot;.&quot;TRANSACTION_LINES&quot; A inner join &quot;NETSUITE_LANDING&quot;.&quot;FINANCE&quot;.&quot;TRANSACTIONS&quot; B on A. TRANSACTION_ID&#13;&#10;=B. TRANSACTION_ID) C left outer join &quot;FINANCE_DATAMART&quot;.&quot;FINANCE&quot;.&quot;DIM_CUSTOMERS&quot; D on C.ENTITY_ID=D.CUSTOMER_ID) F left outer JOIN &#13;&#10;&quot;NETSUITE_LANDING&quot;.&quot;FINANCE&quot;.&quot;ACCOUNTS&quot; G ON F.ACCOUNT_ID=G.ACCOUNT_ID</relation>
+        </properties>
+        <properties context='extract'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+        </properties>
+      </object>
+    </objects>
+  </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+</datasource>
