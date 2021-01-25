@@ -146,6 +146,17 @@
           <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Migrated Data]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
         </metadata-record>
         <metadata-record class='column'>
+		 <remote-name>ACCOUNT_ID</remote-name>
+          <remote-type>5</remote-type>
+          <local-name>[ACCOUNT_ID]</local-name>
+          <parent-name>[Extract]</parent-name>
+          <remote-alias>ACCOUNT_ID</remote-alias>
+          <ordinal>0</ordinal>
+          <family>Custom SQL Query</family>
+          <local-type>real</local-type>
+          <aggregation>Sum</aggregation>
+          <approx-count>114</approx-count>
+          <contains-null>true</contains-null>
           <remote-name>AMOUNT</remote-name>
           <remote-type>5</remote-type>
           <local-name>[AMOUNT]</local-name>
